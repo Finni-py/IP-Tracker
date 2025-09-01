@@ -1,7 +1,9 @@
 import sqlite3
+from app.utils.take_path import found_path
+
 
 # Подключаемся к базе данных (создается, если не существует)
-db = sqlite3.connect('../user_requests.db')
+db = sqlite3.connect(found_path(), check_same_thread=False)
 cursor = db.cursor()
 
 # Создаем таблицу пользователей, если она еще не создана

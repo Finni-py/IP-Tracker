@@ -1,5 +1,5 @@
 import sqlite3
-
+from  app.utils.take_path import found_path
 
 def add_info_in_database(chat_id_in: str, nickname: str, user_request: str) -> None:
     """
@@ -7,7 +7,7 @@ def add_info_in_database(chat_id_in: str, nickname: str, user_request: str) -> N
     Если пользователь с данным chat_id еще не существует — добавляет его.
     Затем добавляет новый запрос, связанный с этим пользователем.
     """
-    db = sqlite3.connect('../user_requests.db')
+    db = sqlite3.connect(found_path(), check_same_thread=False)
     cursor = db.cursor()
 
     # Вставляем нового пользователя, если такого chat_id еще нет в таблице
